@@ -55,7 +55,7 @@ def scrape_reddit_comments(player_list, subreddit="nba", num_posts=100, num_comm
         try:
             posts = reddit.subreddit(subreddit).search(player, sort="top", limit=num_posts)
         except Exception as e:
-            print(f"⚠️ Error searching posts for {player}: {e}")
+            print(f" Error searching posts for {player}: {e}")
             continue
 
         for submission in posts:
@@ -74,7 +74,7 @@ def scrape_reddit_comments(player_list, subreddit="nba", num_posts=100, num_comm
                         # all_comments.append([text, player])
                         continue
             except Exception as e:
-                print(f"⚠️ Error processing submission/comments: {e}")
+                print(f" Error processing submission/comments: {e}")
                 continue
 
     return pd.DataFrame(all_comments, columns=["text", "player"])
@@ -104,4 +104,4 @@ if __name__ == "__main__":
 
     df = scrape_reddit_comments(players, num_posts=100, num_comments=10)
     df.to_csv("backend/data/nba_reddit_comments.csv", index=False)
-    print(f"✅ Scraped and saved {len(df)} player-tagged Reddit comments!")
+    print(f" Scraped and saved {len(df)} player-tagged Reddit comments!")
