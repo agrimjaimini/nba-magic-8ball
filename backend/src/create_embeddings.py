@@ -16,4 +16,4 @@ text_embeddings = [model.encode(text).tolist() for text in df.text]
 df = pd.DataFrame({"text": df.text, "embedding": text_embeddings, "player": df.player})
 df.to_csv("backend/data/nba_embeddings.csv", index=False)
 
-print(f"✅ Successfully updated nba_embeddings.csv with player embeddings!")
+print(f" Successfully updated nba_embeddings.csv with player embeddings!")
