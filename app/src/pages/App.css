@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+:root {
+  --primary-color: #007BFF;
+  --secondary-color: #00D4FF;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --transition-speed: 0.3s;
+  --glow: rgba(0, 123, 255, 0.4);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top left, #1c1c1c, #000000);
+  color: var(--text-color);
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  overflow-y: auto;
+}
+
+/* Header */
+header {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nba-logo {
+  width: 32px;
+  height: auto;
+}
+
+/* Titles */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin: 10px 0 30px;
+}
+
+/* Magic 8 Ball */
+.magic8ball-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/eb/Magic_eight_ball.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px var(--glow), 0 0 50px var(--glow);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+  animation: float 4s ease-in-out infinite;
+  margin-bottom: 20px;
+  overflow: visible;
+}
+
+.magic8ball-container:hover {
+  box-shadow: 0 0 35px var(--secondary-color);
+}
+
+.shake {
+  animation: shake 1s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  10% { transform: translate(3px, -3px) rotate(2deg); }
+  20% { transform: translate(-3px, 3px) rotate(-2deg); }
+  30% { transform: translate(4px, -4px) rotate(3deg); }
+  40% { transform: translate(-4px, 4px) rotate(-3deg); }
+  50% { transform: translate(3px, -3px) rotate(2deg); }
+  60% { transform: translate(-3px, 3px) rotate(-2deg); }
+  70% { transform: translate(2px, -2px) rotate(1deg); }
+  80% { transform: translate(-2px, 2px) rotate(-1deg); }
+  90% { transform: translate(1px, -1px) rotate(0.5deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Answer Text */
+.answer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  text-align: center;
+  color: #00d4ff;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.3;
+  padding: 12px;
+}
+
+/* Glowing Placeholder */
+.placeholder {
+  font-weight: 600;
+  background: linear-gradient(90deg, #00d4ff, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #007bff;
+    opacity: 0.7;
+  }
+  to {
+    text-shadow: 0 0 15px #00d4ff;
+    opacity: 1;
+  }
+}
+
+/* Input & Button */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+input[type="text"] {
+  padding: 12px;
+  font-size: 1rem;
+  width: 80%;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  transition: all var(--transition-speed) ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 10px var(--secondary-color);
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  cursor: pointer;
+  transition: transform var(--transition-speed), background var(--transition-speed);
+  backdrop-filter: blur(5px);
+}
+
+button:hover {
+  background: linear-gradient(90deg, #0056b3, #008CFF);
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.player-headshot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px; /* ✅ more space between 8-ball and headshot */
+  margin-bottom: 20px;
+}
+
+.player-headshot img {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: none;      /* ✅ removes glowing border/shadow */
+  border: none;          /* ✅ fully removes border */
+  transition: transform 0.3s ease;
+  animation: fadeInSlideUp 0.5s ease-in-out;
+}
+
+.player-headshot img:hover {
+  transform: scale(1.05);
+}
+
+
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 10px 0 20px;
+}
+
+.social-icons a {
+  color: var(--text-color);
+  font-size: 28px;
+  transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+.social-icons a:hover {
+  color: var(--primary-color);
+  transform: scale(1.3);
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  opacity: 0.6;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* About Page */
+.about-link {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.about-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.about-link a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .magic8ball-container {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  input[type="text"] {
+    width: 90%;
+  }
+
+  .player-headshot img {
+    max-width: 120px;
+  }
+
+  .answer-text {
+    font-size: 0.9rem;
+    width: 80%;
+  }
+}
