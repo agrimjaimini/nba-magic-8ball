@@ -59,4 +59,4 @@ if __name__ == "__main__":
     ]
     pairs_df = pd.DataFrame(pairs_list)
     pairs_df.to_csv("backend/data/training_pairs.csv", index=False)
-    print("✅ Training pairs saved to training_pairs.csv")
+    print(" Training pairs saved to training_pairs.csv")
